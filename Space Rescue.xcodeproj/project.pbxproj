@@ -14,6 +14,8 @@
 		97D819CC22C128E100F50E98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97D819CA22C128E100F50E98 /* Main.storyboard */; };
 		97D819CE22C128E400F50E98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97D819CD22C128E400F50E98 /* Assets.xcassets */; };
 		97D819D122C128E400F50E98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97D819CF22C128E400F50E98 /* LaunchScreen.storyboard */; };
+		97D819D922C1333C00F50E98 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97D819D822C1333C00F50E98 /* Level1.sks */; };
+		97D819DB22C136E400F50E98 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D819DA22C136E400F50E98 /* Anchor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		97D819CD22C128E400F50E98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97D819D022C128E400F50E98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97D819D222C128E400F50E98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97D819D822C1333C00F50E98 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
+		97D819DA22C136E400F50E98 /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				97D819C222C128E100F50E98 /* AppDelegate.swift */,
 				97D819C422C128E100F50E98 /* Scene.sks */,
 				97D819C622C128E100F50E98 /* Scene.swift */,
+				97D819DA22C136E400F50E98 /* Anchor.swift */,
+				97D819D822C1333C00F50E98 /* Level1.sks */,
 				97D819C822C128E100F50E98 /* ViewController.swift */,
 				97D819CA22C128E100F50E98 /* Main.storyboard */,
 				97D819CD22C128E400F50E98 /* Assets.xcassets */,
@@ -132,6 +138,7 @@
 				97D819D122C128E400F50E98 /* LaunchScreen.storyboard in Resources */,
 				97D819CE22C128E400F50E98 /* Assets.xcassets in Resources */,
 				97D819CC22C128E100F50E98 /* Main.storyboard in Resources */,
+				97D819D922C1333C00F50E98 /* Level1.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +151,7 @@
 			files = (
 				97D819C922C128E100F50E98 /* ViewController.swift in Sources */,
 				97D819C722C128E100F50E98 /* Scene.swift in Sources */,
+				97D819DB22C136E400F50E98 /* Anchor.swift in Sources */,
 				97D819C322C128E100F50E98 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
