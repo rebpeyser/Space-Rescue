@@ -17,12 +17,37 @@ class Scene: SKScene {
     var isWorldSetUp = false
     var aim: SKSpriteNode!
     let gameSize = CGSize(width: 2, height: 2)
+    var haveFuel = false
+    let spaceDogLabel = SKLabelNode(text: "Space Dogs Rescued")
+    let numberOfDogsLabel = SKLabelNode(text: "0")
+    
+    var dogCount = 0 {
+        didSet {
+            self.numberOfDogsLabel.text = "\(dogCount)"
+        }
+    }
+    
+    func setUpLabels() {
+        spaceDogLabel.fontSize = 20
+        spaceDogLabel.fontName = "Futura-Medium"
+        spaceDogLabel.color = .white
+        spaceDogLabel.position = CGPoint(x: 0, y: 280)
+        addChild(spaceDogLabel)
+        
+        numberOfDogsLabel.fontSize = 20
+        numberOfDogsLabel.fontName = "Futura-Medium"
+        numberOfDogsLabel.color = .blue
+        spaceDogLabel.position = CGPoint(x: 0, y: 240)
+        addChild(numberOfDogsLabel)
+    
+    }
 
 
     override func didMove(to view: SKView) {
         // Setup your scene here
         aim = SKSpriteNode(imageNamed: "aim")
         addChild(aim)
+        setUpLabels()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -31,6 +56,10 @@ class Scene: SKScene {
             setUpWorld()
         }
         adjustLighting()
+        guard let currentFrame = sceneView.session.currentFrame  else {
+            return
+        }
+        collectFuel(currentFrame: currentFrame)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,8 +94,6 @@ class Scene: SKScene {
         isWorldSetUp = true
         
     }
-        
-
     
     
     func adjustLighting() {
@@ -89,7 +116,7 @@ class Scene: SKScene {
         let hitNodes = nodes(at: location)
         var rescuedDog: SKNode?
         for node in hitNodes {
-            if node.name == "trappedDog" {
+            if node.name == "trappedDog" && haveFuel == true {
                 rescuedDog = node
                 break
             }
@@ -99,6 +126,21 @@ class Scene: SKScene {
             let removeDog = SKAction.removeFromParent()
             let sequence = SKAction.sequence([wait, removeDog])
             rescuedDog.run(sequence)
+            dogCount += 1
+        }
+    }
+    
+    func collectFuel(currentFrame: ARFrame) {
+        for anchor in currentFrame.anchors {
+            guard let node = sceneView.node(for: anchor),
+                node.name == NodeType.fuel.rawValue
+                else {continue}
+            let distance = simd_distance(anchor.transform.columns.3, currentFrame.camera.transform.columns.3)
+            if distance < 0.1 {
+                sceneView.session.remove(anchor: anchor)
+                haveFuel = true
+                break
+            }
         }
     }
 }
